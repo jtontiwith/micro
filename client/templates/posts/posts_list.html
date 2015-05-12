@@ -1,0 +1,14 @@
+<template name="postsList">
+	<div class="posts"> 
+		{{#each posts}}<!--post is Template helper, a placeholder dynamic v-->
+			{{> postItem}} <!--iterating over "posts" and adding postItem-->
+		{{/each}}<!--1.0-->
+	</div>
+</template>
+
+
+<!--Expressions such as {{title}} either call a property of the current object, or the return value of a template helper as defined in the current template's manager-->
+
+
+<!--1.0 the each block helper iterates over the array, but also sets the value of THIS inside the block to the iterated object, so it is iterating over "posts" which is the helper that contains the data from the postData variable (which is an array) so each post being iterated over is assigned in that instant to THIS while post_item.js has the logic to pull out the hostname part of the url and repint it there along side-->
+

@@ -1,0 +1,20 @@
+<!--so all the data that gets pulled out of the Posts collection is returned by the postList helper function is kinda guided in by this tempa...-->
+
+<!--I can see the Expressions {{}} doing two different things here, the
+top expressions are just calling specific properities url, title, domain, of the current object-->
+
+<template name="postItem">
+	<div class="post">
+		<div class="post-content">
+			<h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
+<!--this works, calling the url, title, and domain, because this template is called in the each block of the post_list template, but first to make it work the each block calls the helper function (which has js that grabs all the posts and their repective data) and that is what is what make the object available to the post_item tempalte-->		
+
+		<p>
+			submitted by {{author}}, <!--defined in some helper function somewhere I guess-->
+			<a href="{{pathFor 'postPage'}}">{{commentsCount}} comments</a>
+			{{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}<!--if "ownPost" is true then show link to edit the post, ownPost is of course a helper function defined in the post_item.js-->
+		</p>
+		</div>
+		<a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a><!--can use helper because postPage route has been named in the router-->
+	</div>
+</template>
